@@ -57,7 +57,7 @@ public class StudentController {
 	   }
 	   @GetMapping("microservice/{id}")
 	    public Result getSalary(@PathVariable Long id) {
-			Application application = eurekaClient.getApplication("result-service");
+			Application application = eurekaClient.getApplication("result-ms");
 	        InstanceInfo instanceInfo = application.getInstances().get(0);
 	        String url = "http://" + instanceInfo.getIPAddr() + ":" + instanceInfo.getPort() + "/"+ id;
 	        Result result = restTemplate.getForObject(url, Result.class);
